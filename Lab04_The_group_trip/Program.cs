@@ -1,5 +1,5 @@
 ﻿/*
-* Name: Aaron Robinson
+*Name: Aaron Robinson
 *Course CSCI 1250, Section 001
 *Assignment Lab 04, The Group Trip
 *Date October 7, 2026
@@ -74,8 +74,28 @@ System.Console.WriteLine($"Slices each: {slicesPerPerson:F1}");
 System.Console.WriteLine($"Cost per person: {costPerPerson:C}");
 System.Console.WriteLine();
 
+// Part 3
+System.Console.WriteLine("=== Part 3: Who Works How Long ===");
+
+double[] mustWork = new double[numberOfPeople];
+double[] takeHomePerHour = new double[numberOfPeople];
+
+double totalHours = 0;
 
 
+for(int i = 0; i < names.Length; i++)
+{
+    totalHours += hoursWorked[i];
+
+    mustWork[i] = HoursToCover(costPerPerson, takeHomePerHour[i]);
+
+    System.Console.WriteLine($"{names[i]}: takes home {takeHomePay[i]} for {hoursWorked[i]}, {hourRate[i]}, must work {mustWork[i]} hours ");
+
+}
+
+// Get the longest number from the must work array
+double longest = 0;
+longest = Math.Max(longest, mustWork.Max());
 
 
 static double FuelCost(double miles, double milesPerGallon, double pricePerGallon)
