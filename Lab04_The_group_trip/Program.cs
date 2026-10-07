@@ -15,7 +15,7 @@ string[] names = {"Ada", "Grace", "Alan", "Katherine" };
 double[] hoursWorked = {22, 15, 30, 18 };
 double[] hourRate = {13.50, 16.00, 11.20, 14.80 };
 
-int numberOfPeople = names.Length;
+
 
 // Asking questions
 Console.Write("Round trip miles: ");
@@ -36,8 +36,8 @@ System.Console.WriteLine();
 // Calculations
 
 // Find take home pay for each person and assigns it to an array
-double[] takeHomePay = new double[numberOfPeople];
-for(int i = 0; i < numberOfPeople; i++)
+double[] takeHomePay = new double[names.Length];
+for(int i = 0; i < names.Length; i++)
 {
 
     takeHomePay[i] = TakeHomePay(hoursWorked[i], hourRate[i], TAX_RATE);
@@ -45,14 +45,14 @@ for(int i = 0; i < numberOfPeople; i++)
 
 double totalSlices = numberOfPizzas * SLICES_PER_PIZZA;
 double pizzaCost = numberOfPizzas * pricePerPizza;
-double slicesPerPerson = totalSlices / numberOfPeople;
+double slicesPerPerson = totalSlices / names.Length;
 
 double tripTotal = FuelCost(totalMiles, milesPerGallon, pricePerGallon) + pizzaCost;
-double costPerPerson = tripTotal / numberOfPeople;
+double costPerPerson = tripTotal / names.Length;
 
 // Array of take home pay per hour for each person in correct order
-double[] takeHomePayPerHour = new double[numberOfPeople];
-for(int i = 0; i < numberOfPeople; i++)
+double[] takeHomePayPerHour = new double[names.Length];
+for(int i = 0; i < names.Length; i++)
 {
     takeHomePayPerHour[i] = takeHomePay[i] / hoursWorked[i];
 }
@@ -69,7 +69,7 @@ System.Console.WriteLine();
 
 // Part 2
 System.Console.WriteLine("=== Part 2: The Group ===");
-System.Console.WriteLine($"People going: {numberOfPeople}");
+System.Console.WriteLine($"People going: {names.Length}");
 System.Console.WriteLine($"Slices each: {slicesPerPerson:F1}");
 System.Console.WriteLine($"Cost per person: {costPerPerson:C}");
 System.Console.WriteLine();
@@ -77,12 +77,12 @@ System.Console.WriteLine();
 // Part 3
 System.Console.WriteLine("=== Part 3: Who Works How Long ===");
 
-double[] mustWork = new double[numberOfPeople];
-double[] takeHomePerHour = new double[numberOfPeople];
+double[] mustWork = new double[names.Length];
+double[] takeHomePerHour = new double[names.Length];
 double totalTakeHomePay = 0;
 double totalHours = 0;
 
-for(int i = 0; i < numberOfPeople; i++)
+for(int i = 0; i < names.Length; i++)
 {
     takeHomePerHour[i] = takeHomePay[i] / hoursWorked[i];
 }
