@@ -82,6 +82,12 @@ double[] takeHomePerHour = new double[numberOfPeople];
 double totalTakeHomePay = 0;
 double totalHours = 0;
 
+for(int i = 0; i < numberOfPeople; i++)
+{
+    takeHomePerHour[i] = takeHomePay[i] / hoursWorked[i];
+}
+
+
 // Get the longest number from the must work array
 double longest = 0;
 longest = Math.Max(longest, mustWork.Max());
@@ -94,15 +100,13 @@ for(int i = 0; i < names.Length; i++)
 
     mustWork[i] = HoursToCover(costPerPerson, takeHomePerHour[i]);
 
-    System.Console.WriteLine($"{names[i]}: takes home {takeHomePay[i]} for {hoursWorked[i]}, {hourRate[i]}, must work {mustWork[i]} hours ");
+    System.Console.WriteLine($"{names[i]}: takes home {takeHomePay[i]:C} for {hoursWorked[i]} hours, {hourRate[i]} per hour, must work {mustWork[i]:F2} hours ");
 
 }
 
 System.Console.WriteLine($"Total hours worked: {totalHours}");
 System.Console.WriteLine($"Total take home pay: {totalTakeHomePay:C}");
 System.Console.WriteLine($"Longest anyone must work: {longest:F2}");
-
-
 
 
 static double FuelCost(double miles, double milesPerGallon, double pricePerGallon)
