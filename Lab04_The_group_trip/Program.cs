@@ -63,8 +63,8 @@ for(int i = 0; i < numberOfPeople; i++)
 Console.WriteLine("=== Part 1: The Trip ===");
 
 Console.WriteLine($"Fuel cost: {FuelCost(totalMiles, milesPerGallon, pricePerGallon):C}");
-Console.WriteLine($"Pizza cost:  + {pizzaCost:C}");
-System.Console.WriteLine($"Trip total + {tripTotal:C}");
+Console.WriteLine($"Pizza cost: {pizzaCost:C}");
+System.Console.WriteLine($"Trip total: {tripTotal:C}");
 System.Console.WriteLine();
 
 // Part 2
@@ -100,13 +100,18 @@ for(int i = 0; i < names.Length; i++)
 
     mustWork[i] = HoursToCover(costPerPerson, takeHomePerHour[i]);
 
-    System.Console.WriteLine($"{names[i]}: takes home {takeHomePay[i]:C} for {hoursWorked[i]} hours, {hourRate[i]} per hour, must work {mustWork[i]:F2} hours ");
+    System.Console.WriteLine($"{names[i]}: takes home {takeHomePay[i]:C} for {hoursWorked[i]} hours, {hourRate[i]:C} per hour, must work {mustWork[i]:F2} hours ");
 
 }
 
 System.Console.WriteLine($"Total hours worked: {totalHours}");
 System.Console.WriteLine($"Total take home pay: {totalTakeHomePay:C}");
 System.Console.WriteLine($"Longest anyone must work: {longest:F2}");
+
+
+
+
+
 
 
 static double FuelCost(double miles, double milesPerGallon, double pricePerGallon)
