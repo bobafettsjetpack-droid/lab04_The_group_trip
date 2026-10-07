@@ -10,9 +10,14 @@
 const double TAX_RATE = 0.18;
 const int SLICES_PER_PIZZA = 8;
 
-//Part 1
 
-Console.WriteLine("=== Part 1: Road Trip ===");
+string[] names = {"Ada", "Grace", "Alan", "Katherine" };
+double[] hoursWorked = {22, 15, 30, 18 };
+double[] hourRate = {13.50, 16.00, 11.20, 14.80 };
+
+int peopleGoing = names.Length;
+
+// Asking questions
 Console.Write("Round trip miles: ");
 double totalMiles = Convert.ToDouble(Console.ReadLine());
 
@@ -22,59 +27,42 @@ double milesPerGallon = Convert.ToDouble(Console.ReadLine());
 Console.Write("Price per gallon: ");
 double pricePerGallon = Convert.ToDouble(Console.ReadLine());
 
-double gallonsNeeded = totalMiles / milesPerGallon;
-
-Console.WriteLine("Gallons needed: " + gallonsNeeded.ToString("F2"));
-Console.WriteLine($"Fuel cost:  + {FuelCost(totalMiles, milesPerGallon, pricePerGallon):C}");
-
-
-//Part 2
-
-System.Console.WriteLine();
-
-//asking questions
 Console.Write("How many pizzas: ");
 int numberOfPizzas = Convert.ToInt32(Console.ReadLine());
 
 Console.Write("Price per pizza: ");
 double pricePerPizza = Convert.ToDouble(Console.ReadLine());
 
-//calculating
-int totalSlices = numberOfPizzas * SLICES_PER_PIZZA;
-// (Part of optional from lab 2?) double slicesPerPerson = (double)totalSlices / numberOfPeople;
-double pizzaCost = numberOfPizzas * pricePerPizza;
+// Calculations
+//double grossPay = hoursWorked * hourRate;
+for(int i = 0; i < names.Length; i++)
+{
 
-Console.WriteLine("Total slices: " + totalSlices);
-// (Part of optional from lab 2?) Console.WriteLine("Slices per person: " + slicesPerPerson.ToString("F1"));
-Console.WriteLine("Total pizza cost: " + pizzaCost.ToString("C"));
-
-//Part 3
-Console.WriteLine();
-Console.WriteLine("=== Part 3: Paycheck ===");
+    double[] takeHomePay = TakeHomePay(hoursWorked[i], hourRate[i], TAX_RATE);
+}
 
 
-//calculating
-double grossPay = hoursWorked * hourRate;
-double taxWithheld = grossPay * TAX_RATE;
-double takeHomePay = grossPay - taxWithheld;
-
-Console.WriteLine("Gross pay: " + grossPay.ToString("C"));
-Console.WriteLine("Tax withheld: " + taxWithheld.ToString("C"));
-Console.WriteLine($"Take home pay: + {TakeHomePay(hoursWorked, hourRate, TAX_RATE):C}");
-
-
-
-//Part 4
-System.Console.WriteLine();
-Console.WriteLine("=== Part 4: The Whole Trip ===");
-
-double tripTotal = fuelCost + pizzaCost;
+double tripTotal = FuelCost();
 double costPerPerson = tripTotal / numberOfPeople;
 double takeHomePayPerHour = takeHomePay / hoursWorked;
 
-Console.WriteLine("Trip total: " + tripTotal.ToString("C"));
-Console.WriteLine("Trip total: " + tripTotal.ToString());
-//I would use the $ style of trip cost because it is easier to understand and nicer to look at.
+double totalSlices = numberOfPizzas * SLICES_PER_PIZZA;
+
+double pizzaCost = numberOfPizzas * pricePerPizza;
+
+double slicesPerPerson = totalSlices / peopleGoing;
+
+
+
+
+Console.WriteLine("=== Part 1: The Trip ===");
+
+
+Console.WriteLine($"Fuel cost:  + {FuelCost(totalMiles, milesPerGallon, pricePerGallon):C}");
+Console.WriteLine($"Pizza cost:  + {pizzaCost:C}");
+System.Console.WriteLine($"Trip total + {tripTotal:C}");
+
+
 Console.WriteLine("Cost per person: " + costPerPerson.ToString("C"));
 Console.WriteLine("Take home pay per hour: " + takeHomePayPerHour.ToString("C"));
 Console.WriteLine($"Hours you must work to cover your share: + {HoursToCover(tripTotal, takeHomePayPerHour):F2}");
@@ -98,6 +86,7 @@ static double TakeHomePay(double hoursWorked, double hourRate, double taxRate)
 
     return takeHomePay;
 }
+
 static double HoursToCover(double amountOwed, double takeHomePerHour)
 {
     double total = amountOwed / takeHomePerHour;
