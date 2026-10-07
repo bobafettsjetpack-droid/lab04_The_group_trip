@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Lab04_The_group_trip")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5bf6f35d3f705f8985a2722721dba9e18efd123d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca577172be6194c74d971ef25d9aff845e15f361")]
 [assembly: System.Reflection.AssemblyProductAttribute("Lab04_The_group_trip")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Lab04_The_group_trip")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
