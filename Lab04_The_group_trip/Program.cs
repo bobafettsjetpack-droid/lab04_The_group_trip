@@ -41,11 +41,11 @@ double pricePerPizza = Convert.ToDouble(Console.ReadLine());
 
 //calculating
 int totalSlices = numberOfPizzas * SLICES_PER_PIZZA;
-double slicesPerPerson = (double)totalSlices / numberOfPeople;
+// (Part of optional from lab 2?) double slicesPerPerson = (double)totalSlices / numberOfPeople;
 double pizzaCost = numberOfPizzas * pricePerPizza;
 
 Console.WriteLine("Total slices: " + totalSlices);
-Console.WriteLine("Slices per person: " + slicesPerPerson.ToString("F1"));
+// (Part of optional from lab 2?) Console.WriteLine("Slices per person: " + slicesPerPerson.ToString("F1"));
 Console.WriteLine("Total pizza cost: " + pizzaCost.ToString("C"));
 
 //Part 3
@@ -60,7 +60,25 @@ double takeHomePay = grossPay - taxWithheld;
 
 Console.WriteLine("Gross pay: " + grossPay.ToString("C"));
 Console.WriteLine("Tax withheld: " + taxWithheld.ToString("C"));
-Console.WriteLine("Take home pay: " + takeHomePay.ToString("C"));
+Console.WriteLine($"Take home pay: + {TakeHomePay(hoursWorked, hourRate, TAX_RATE):C}");
+
+
+
+//Part 4
+System.Console.WriteLine();
+Console.WriteLine("=== Part 4: The Whole Trip ===");
+
+double tripTotal = fuelCost + pizzaCost;
+double costPerPerson = tripTotal / numberOfPeople;
+double takeHomePayPerHour = takeHomePay / hoursWorked;
+
+Console.WriteLine("Trip total: " + tripTotal.ToString("C"));
+Console.WriteLine("Trip total: " + tripTotal.ToString());
+//I would use the $ style of trip cost because it is easier to understand and nicer to look at.
+Console.WriteLine("Cost per person: " + costPerPerson.ToString("C"));
+Console.WriteLine("Take home pay per hour: " + takeHomePayPerHour.ToString("C"));
+Console.WriteLine($"Hours you must work to cover your share: + {HoursToCover(tripTotal, takeHomePayPerHour):F2}");
+
 
 
 
@@ -81,3 +99,7 @@ static double TakeHomePay(double hoursWorked, double hourRate, double taxRate)
     return takeHomePay;
 }
 static double HoursToCover(double amountOwed, double takeHomePerHour)
+{
+    double total = amountOwed / takeHomePerHour;
+    return total;
+}
