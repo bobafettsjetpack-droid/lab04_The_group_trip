@@ -15,7 +15,7 @@ string[] names = {"Ada", "Grace", "Alan", "Katherine" };
 double[] hoursWorked = {22, 15, 30, 18 };
 double[] hourRate = {13.50, 16.00, 11.20, 14.80 };
 
-int peopleGoing = names.Length;
+int numberOfPeople = names.Length;
 
 // Asking questions
 Console.Write("Round trip miles: ");
@@ -34,11 +34,13 @@ Console.Write("Price per pizza: ");
 double pricePerPizza = Convert.ToDouble(Console.ReadLine());
 
 // Calculations
-//double grossPay = hoursWorked * hourRate;
+
+// Find take home pay for each person and assigns it to an array
+double[] takeHomePay = new double[numberOfPeople];
 for(int i = 0; i < names.Length; i++)
 {
 
-    double[] takeHomePay = TakeHomePay(hoursWorked[i], hourRate[i], TAX_RATE);
+    takeHomePay[i] = TakeHomePay(hoursWorked[i], hourRate[i], TAX_RATE);
 }
 
 
@@ -50,7 +52,7 @@ double totalSlices = numberOfPizzas * SLICES_PER_PIZZA;
 
 double pizzaCost = numberOfPizzas * pricePerPizza;
 
-double slicesPerPerson = totalSlices / peopleGoing;
+double slicesPerPerson = totalSlices / numberOfPeople;
 
 
 
