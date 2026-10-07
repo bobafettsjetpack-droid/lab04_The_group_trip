@@ -62,15 +62,19 @@ for(int i = 0; i < numberOfPeople; i++)
 // Part 1
 Console.WriteLine("=== Part 1: The Trip ===");
 
-Console.WriteLine($"Fuel cost:  + {FuelCost(totalMiles, milesPerGallon, pricePerGallon):C}");
+Console.WriteLine($"Fuel cost: {FuelCost(totalMiles, milesPerGallon, pricePerGallon):C}");
 Console.WriteLine($"Pizza cost:  + {pizzaCost:C}");
 System.Console.WriteLine($"Trip total + {tripTotal:C}");
+System.Console.WriteLine();
 
 // Part 2
 System.Console.WriteLine("=== Part 2: The Group ===");
 System.Console.WriteLine($"People going: {numberOfPeople}");
 System.Console.WriteLine($"Slices each: {slicesPerPerson:F1}");
 System.Console.WriteLine($"Cost per person: {costPerPerson:C}");
+System.Console.WriteLine();
+
+
 
 
 
