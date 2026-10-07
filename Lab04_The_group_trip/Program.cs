@@ -1,9 +1,9 @@
 ﻿/*
 * Name: Aaron Robinson
 *Course CSCI 1250, Section 001
-*Assignment Lab 02, Trip Calculator
-*Date September 23, 2026
-*Description: Calculates the fuel, food, and work hours behind one road trip.
+*Assignment Lab 04, The Group Trip
+*Date October 7, 2026
+*Description: Rebuilds the trip calculator with methods and arrays so it reports on a whole group instead of one person.
 */
 
 // CONSTANT IS HERE
@@ -37,39 +37,40 @@ double pricePerPizza = Convert.ToDouble(Console.ReadLine());
 
 // Find take home pay for each person and assigns it to an array
 double[] takeHomePay = new double[numberOfPeople];
-for(int i = 0; i < names.Length; i++)
+for(int i = 0; i < numberOfPeople; i++)
 {
 
     takeHomePay[i] = TakeHomePay(hoursWorked[i], hourRate[i], TAX_RATE);
 }
 
-
-double tripTotal = FuelCost();
-double costPerPerson = tripTotal / numberOfPeople;
-double takeHomePayPerHour = takeHomePay / hoursWorked;
-
 double totalSlices = numberOfPizzas * SLICES_PER_PIZZA;
-
 double pizzaCost = numberOfPizzas * pricePerPizza;
-
 double slicesPerPerson = totalSlices / numberOfPeople;
 
+double tripTotal = FuelCost(totalMiles, milesPerGallon, pricePerGallon) + pizzaCost;
+double costPerPerson = tripTotal / numberOfPeople;
 
+// Array of take home pay per hour for each person in correct order
+double[] takeHomePayPerHour = new double[numberOfPeople];
+for(int i = 0; i < numberOfPeople; i++)
+{
+    takeHomePayPerHour[i] = takeHomePay[i] / hoursWorked[i];
+}
 
+//Outputs
 
+// Part 1
 Console.WriteLine("=== Part 1: The Trip ===");
-
 
 Console.WriteLine($"Fuel cost:  + {FuelCost(totalMiles, milesPerGallon, pricePerGallon):C}");
 Console.WriteLine($"Pizza cost:  + {pizzaCost:C}");
 System.Console.WriteLine($"Trip total + {tripTotal:C}");
 
-
-Console.WriteLine("Cost per person: " + costPerPerson.ToString("C"));
-Console.WriteLine("Take home pay per hour: " + takeHomePayPerHour.ToString("C"));
-Console.WriteLine($"Hours you must work to cover your share: + {HoursToCover(tripTotal, takeHomePayPerHour):F2}");
-
-
+// Part 2
+System.Console.WriteLine("=== Part 2: The Group ===");
+System.Console.WriteLine($"People going: {numberOfPeople}");
+System.Console.WriteLine($"Slices each: {slicesPerPerson:F1}");
+System.Console.WriteLine($"Cost per person: {costPerPerson:C}");
 
 
 
