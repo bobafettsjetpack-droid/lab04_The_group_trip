@@ -90,7 +90,6 @@ for(int i = 0; i < numberOfPeople; i++)
 
 // Get the longest number from the must work array
 double longest = 0;
-longest = Math.Max(longest, mustWork.Max());
 
 // Part 3 output
 for(int i = 0; i < names.Length; i++)
@@ -99,6 +98,7 @@ for(int i = 0; i < names.Length; i++)
     totalTakeHomePay += takeHomePay[i];
 
     mustWork[i] = HoursToCover(costPerPerson, takeHomePerHour[i]);
+    longest = Math.Max(longest, mustWork[i]);
 
     System.Console.WriteLine($"{names[i]}: takes home {takeHomePay[i]:C} for {hoursWorked[i]} hours, {HourRateAfterTax(hourRate[i], TAX_RATE):C} per hour, must work {mustWork[i]:F2} hours ");
 
