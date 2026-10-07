@@ -100,7 +100,7 @@ for(int i = 0; i < names.Length; i++)
 
     mustWork[i] = HoursToCover(costPerPerson, takeHomePerHour[i]);
 
-    System.Console.WriteLine($"{names[i]}: takes home {takeHomePay[i]:C} for {hoursWorked[i]} hours, {hourRate[i]:C} per hour, must work {mustWork[i]:F2} hours ");
+    System.Console.WriteLine($"{names[i]}: takes home {takeHomePay[i]:C} for {hoursWorked[i]} hours, {HourRateAfterTax(hourRate[i], TAX_RATE):C} per hour, must work {mustWork[i]:F2} hours ");
 
 }
 
@@ -124,7 +124,7 @@ static double FuelCost(double miles, double milesPerGallon, double pricePerGallo
 static double TakeHomePay(double hoursWorked, double hourRate, double taxRate)
 {
     double grossPay = hoursWorked * hourRate;
-    double taxWithheld = grossPay * TAX_RATE;
+    double taxWithheld = grossPay * taxRate;
     double takeHomePay = grossPay - taxWithheld;
 
     return takeHomePay;
@@ -134,4 +134,11 @@ static double HoursToCover(double amountOwed, double takeHomePerHour)
 {
     double total = amountOwed / takeHomePerHour;
     return total;
+}
+
+static double HourRateAfterTax(double hourRate, double taxRate)
+{
+    double hourRateAfterTax = hourRate * taxRate;
+    hourRateAfterTax = hourRate - hourRateAfterTax;
+    return hourRateAfterTax; 
 }
