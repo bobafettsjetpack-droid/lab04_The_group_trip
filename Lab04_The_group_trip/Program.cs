@@ -32,7 +32,7 @@ int numberOfPizzas = Convert.ToInt32(Console.ReadLine());
 
 Console.Write("Price per pizza: ");
 double pricePerPizza = Convert.ToDouble(Console.ReadLine());
-
+System.Console.WriteLine();
 // Calculations
 
 // Find take home pay for each person and assigns it to an array
